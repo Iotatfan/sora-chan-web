@@ -1,19 +1,17 @@
 <template>
-  <div class="wrapper">
-    <app-header></app-header>
-  </div>
-  <router-view/>
+  <app-header></app-header>
+  <router-view />
 </template>
 
 <script>
-import AppHeader from './components/layout/AppHeader.vue'
+import AppHeader from "./components/navigation/AppHeader.vue";
 
 export default {
-    name: 'App',
-    components: {
-      AppHeader,
-  }
-}
+  name: "App",
+  components: {
+    AppHeader,
+  },
+};
 </script>
 
 <style>
@@ -25,17 +23,7 @@ export default {
   color: white;
 }
 
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  color: white;
-  text-decoration: none;
-}
-
 body {
   background: #141518 !important;
 }
-
 </style>
