@@ -1,7 +1,9 @@
 <template>
   <div class="container">
     <intro></intro>
+    <music></music>
     <social></social>
+    <ready></ready>
     <!-- <img alt="Vue logo" src="../assets/logo.jpg"> -->
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
   </div>
@@ -9,7 +11,9 @@
 
 <script>
 import Intro from "@/components/home/Intro.vue";
+import Music from '@/components/home/Music.vue';
 import Social from "@/components/home/Social.vue";
+import Ready from '@/components/home/Ready.vue';
 // @ is an alias to /src
 // import HelloWorld from '@/components/HelloWorld.vue'
 
@@ -17,7 +21,9 @@ export default {
   name: "Home",
   components: {
     Intro,
+    Music,
     Social,
+    Ready
   },
 };
 </script>
@@ -27,15 +33,9 @@ export default {
   font-size: 24px !important;
 }
 
-.btn-discord {
-  background-color: #6889CB !important;
-  color: white !important;
-  margin-bottom: 16px;
-}
-
 .container .home {
-  padding-top: 120px;
-  padding-bottom: 40px;
+  padding-top: 128px;
+  padding-bottom: 64px;
 }
 
 .content {
@@ -48,12 +48,13 @@ export default {
   font-size: 54px;
 }
 
-#btn-cmd a {
+#btn-cmd {
   color: white;
   text-decoration: none;
+  transition: 0.3s;
 }
 
-#btn-cmd a:hover {
+#btn-cmd:hover {
   color: black;
   text-decoration: none;
 }
