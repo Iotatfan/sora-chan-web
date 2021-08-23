@@ -8,13 +8,13 @@ export default {};
 
 <style>
 .btn-discord {
-  background:rgba(114, 137, 218, 1);
+  background:rgba(114, 137, 218, 1) !important;
   color: white !important;
   margin-bottom: 16px;
   transition: 0.3s;
 }
 
 .btn-discord:hover {
-  background: rgba(114, 137, 218, 0.7);
+  background: rgba(114, 137, 218, 0.7) !important;
 }
 </style>

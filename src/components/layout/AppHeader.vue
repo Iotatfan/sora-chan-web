@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <div class="navbar navbar-dark navbar-expand-lg" id="nav">
-      <div class="container-fluid">
+      <div class="container-xxl">
         <div class="navbar-brand">
           <a id="title">
             <router-link to="/">
@@ -31,17 +31,17 @@
           >
             <li class="nav-item">
               <a class="nav-link">
-                <router-link to="/">Home</router-link>
+                <router-link class="glow" to="/">Home</router-link>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link">
-                <router-link to="/commands">Commands</router-link>
+                <router-link class="glow" to="/commands">Commands</router-link>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link">
-                <router-link to="/about">About</router-link>
+                <router-link class="glow" to="/about">About</router-link>
               </a>
             </li>
           </ul>
@@ -68,13 +68,6 @@ export default {
   font-size: 24px;
   text-decoration: none;
 }
-
-/* #title a {
-  color: white;
-  font-weight: bold;
-  font-size: 36px;
-  text-decoration: none;
-} */
 
 .sora-icon {
     margin-left: 24px;

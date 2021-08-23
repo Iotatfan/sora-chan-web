@@ -1,5 +1,5 @@
 <template>
-  <div class="container home">
+  <div class="container-xxl content">
     <div class="d-flex flex-lg-row flex-column container">
       <div class="d-flex flex-column m-3">
         <div class="text-start">
@@ -10,7 +10,7 @@
         <div class="text-start">
           <!-- <a class="btn btn-discord"> Social </a> -->
           <h1 class="headline">Listen along with your friends</h1>
-          <p class="content">
+          <p class="content-text">
             Turn your Discord server into a listening party everyone can
             contribute to.
           </p>

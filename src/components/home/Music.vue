@@ -1,11 +1,11 @@
 <template>
-  <div class="container home">
+  <div class="container-xxl content">
     <div class="d-flex flex-lg-row flex-column-reverse container">
       <div class="d-flex flex-column m-3">
         <div class="text-start">
           <!-- <a class="btn btn-discord"> Social </a> -->
           <h1 class="headline">Solve your music need</h1>
-          <p class="content">
+          <p class="content-text">
             Sora is built to get your Discord server up and running with music
             in no time.
           </p>
