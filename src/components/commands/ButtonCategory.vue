@@ -25,7 +25,7 @@ a {
   font-size: 18px !important;
 }
 
-.btn-category:focus {
+.active {
   background: rgba(114, 137, 218, 1) !important;
   box-shadow: none !important;
 }

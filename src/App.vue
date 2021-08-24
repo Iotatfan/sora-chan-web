@@ -1,7 +1,9 @@
 <template>
   <app-header />
-  <router-view />
-  <app-footer />
+  <div class="flex-wrapper">
+    <router-view />
+    <app-footer />
+  </div>
 </template>
 
 <script>
@@ -26,7 +28,7 @@ export default {
   color: white;
 }
 
-html, body {
+body {
   background: #141518 !important;
 }
 
@@ -42,6 +44,13 @@ html, body {
 .content-text {
   color: #838185;
   font-size: 30px;
+}
+
+.flex-wrapper {
+  display: flex;
+  min-height: 88vh;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .headline {

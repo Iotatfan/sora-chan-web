@@ -56,13 +56,12 @@ export default {
 }
 
 .accordion-body {
-    background: rgba(54, 57, 63, 1) !important;
-    padding-bottom: 1px !important;
+  background: rgba(54, 57, 63, 1) !important;
+  padding-bottom: 1px !important;
 }
 
 .btn-command {
   background: rgba(42, 44, 48, 1) !important;
   color: white !important;
 }
-
 </style>

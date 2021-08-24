@@ -19,16 +19,18 @@
           :category="category"
           :idx="index"
           :key="index"
+          :class="{ active: index === this.selectedCategory }"
+          v-on:click="SelectCategory(index)"
         ></button-category>
       </div>
       <!-- Commands -->
       <div class="d-flex flex-column w-100 ms-lg-3 mt-lg-0 mt-3">
         <button-command
-          v-for="(command, index) in commands"
+          v-for="(command, index) in filteredCommands"
           :command="command.val"
           :desc="command.desc"
           :idx="index"
-          :key="index"
+          :key="command.id"
         ></button-command>
       </div>
     </div>
@@ -37,7 +39,7 @@
 
 <script>
 import ButtonCategory from "../components/commands/ButtonCategory.vue";
-import ButtonCommand from '../components/commands/ButtonCommand.vue';
+import ButtonCommand from "../components/commands/ButtonCommand.vue";
 
 export default {
   name: "Commands",
@@ -47,14 +49,69 @@ export default {
   },
   data() {
     return {
-      categories: ["All", "Basic", "Player", "Setting"],
+      categories: ["All", "Player", "Setting"],
       commands: [
-        { val: "/play", desc: "Loads your input and adds it to the queue" },
-        { val: "/queue", desc: "Displays the current song queue" },
-        { val: "/skip", desc: "Skips to the next song" },
-        { val: "/stop", desc: "Stops the currently playing track" },
+        {
+          id: 0,
+          val: ",play",
+          desc: "Loads your input and adds it to the queue",
+          category: "Player",
+        },
+        {
+          id: 1,
+          val: ",queue",
+          desc: "Displays the current song queue",
+          category: "Player",
+        },
+        {
+          id: 2,
+          val: ",skip",
+          desc: "Skips to the next song",
+          category: "Player",
+        },
+        {
+          id: 3,
+          val: ",stop",
+          desc: "Stops the currently playing track",
+          category: "Player",
+        },
+        {
+          id: 4,
+          val: ",shuffle",
+          desc: "Randomizes the current order of tracks in the queue",
+          category: "Player",
+        },
+        {
+          id: 5,
+          val: ",disconnect",
+          desc: "Disconnects the bot from your voice channel and clears the queue",
+          category: "Player",
+        },
+        {
+          id: 6,
+          val: ",autoplay",
+          desc: "Toggles AutoPlay, which will automatically queue the best song to play next through looking at your listening history",
+          category: "Setting",
+        },
       ],
+      selectedCategory: 0,
     };
   },
+  computed: {
+    filteredCommands: function () {
+      if (this.selectedCategory === 0) {
+        return this.commands;
+      }
+      return this.commands.filter(
+        (n) => n.category == this.categories[this.selectedCategory]
+      );
+    },
+  },
+  methods: {
+    SelectCategory(value) {
+      this.selectedCategory = value;
+    },
+  },
+  watch: {},
 };
 </script>
