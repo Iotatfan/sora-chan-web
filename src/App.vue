@@ -36,16 +36,6 @@ body {
   font-size: 24px !important;
 }
 
-.content {
-  padding-top: 128px;
-  padding-bottom: 64px;
-}
-
-.content-text {
-  color: #838185;
-  font-size: 30px;
-}
-
 .flex-wrapper {
   display: flex;
   min-height: 88vh;
@@ -56,14 +46,5 @@ body {
 .headline {
   font-weight: bold;
   font-size: 54px;
-}
-
-.glow {
-  opacity: 65%;
-  transition: 0.3s;
-}
-
-.glow:hover {
-  opacity: 100%;
 }
 </style>

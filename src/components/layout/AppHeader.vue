@@ -30,20 +30,14 @@
             style="--bs-scroll-height: 100px"
           >
             <li class="nav-item">
-              <a class="nav-link">
-                <router-link class="glow" to="/">Home</router-link>
-              </a>
+              <router-link class="nav-link glow white" to="/">Home</router-link>
             </li>
             <li class="nav-item">
-              <a class="nav-link">
-                <router-link class="glow" to="/commands">Commands</router-link>
-              </a>
+              <router-link class="nav-link glow white" to="/commands">Commands</router-link>
             </li>
-            <li class="nav-item">
-              <a class="nav-link">
-                <router-link class="glow" to="/about">About</router-link>
-              </a>
-            </li>
+            <!-- <li class="nav-item">
+              <router-link class="nav-link glow white" to="/about">About</router-link>
+            </li> -->
           </ul>
         </div>
       </div>
@@ -58,7 +52,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #nav {
   margin: 16px;
 }
@@ -70,10 +64,22 @@ export default {
 }
 
 .sora-icon {
-    margin-left: 24px;
+  margin-left: 24px;
 }
 
 .nav-link {
   margin-right: 24px;
 }
+
+.white {
+  color: white !important;
+  opacity: 0.75;
+  text-decoration: none;
+  transition: 0.3s !important;
+}
+
+.white:hover {
+  opacity: 1;
+}
+
 </style>

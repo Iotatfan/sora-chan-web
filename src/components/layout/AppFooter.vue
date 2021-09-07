@@ -20,7 +20,7 @@
               viewBox="0 0 512 512"
               width="32"
               height="32"
-              class="glow"
+              class="icon-glow"
             >
               <path
                 fill="#ffffff"
@@ -39,7 +39,7 @@
               viewBox="0 0 512 512"
               width="32"
               height="32"
-              class="glow"
+              class="icon-glow"
             >
               <path
                 fill="#ffffff"
@@ -53,7 +53,7 @@
       <div class="mt-2" id="sub-footer">
         <hr />
         <p class="text-center">
-          Copyright © 2021 Sora Inc. All rights reserved.
+          Special thanks to everyone who helped and contributed.
         </p>
       </div>
       <div></div>
@@ -66,9 +66,20 @@ export default {
   name: "AppFooter",
 };
 </script>
-<style>
+
+<style scoped>
 .sora-icon {
   margin-left: 24px;
+}
+
+.icon-glow {
+  color: white !important;
+  opacity: 0.75;
+  transition: 0.3s !important;
+}
+
+.icon-glow:hover {
+  opacity: 1;
 }
 
 .text-blue {

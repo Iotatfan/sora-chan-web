@@ -25,13 +25,24 @@
       </div>
       <!-- Commands -->
       <div class="d-flex flex-column w-100 ms-lg-3 mt-lg-0 mt-3">
-        <button-command
-          v-for="(command, index) in filteredCommands"
-          :command="command.val"
-          :desc="command.desc"
-          :idx="index"
-          :key="command.id"
-        ></button-command>
+        <transition-group
+          appear
+          tag="ul"
+          @before-enter="beforeEnter"
+          @enter="enter"
+          @before-leave="beforeLeave"
+          @leave="leave"
+        >
+          <button-command
+            class="btn-cmd"
+            v-for="(command, index) in filteredCommands"
+            :command="command.val"
+            :desc="command.desc"
+            :idx="index"
+            :key="command.id"
+            :data-index="index"
+          ></button-command>
+        </transition-group>
       </div>
     </div>
   </div>
@@ -40,6 +51,7 @@
 <script>
 import ButtonCategory from "../components/commands/ButtonCategory.vue";
 import ButtonCommand from "../components/commands/ButtonCommand.vue";
+import { gsap } from "gsap";
 
 export default {
   name: "Commands",
@@ -95,10 +107,17 @@ export default {
         },
       ],
       selectedCategory: 0,
+      displayCount: 0,
     };
   },
   computed: {
     filteredCommands: function () {
+      console.log(this.displayCount);
+      console.log(
+        this.commands.filter(
+          (n) => n.category == this.categories[this.selectedCategory]
+        ).length
+      );
       if (this.selectedCategory === 0) {
         return this.commands;
       }
@@ -106,11 +125,53 @@ export default {
         (n) => n.category == this.categories[this.selectedCategory]
       );
     },
+    delayTime: function () {
+      let delay = 0;
+      gsap.utils.toArray(".btn-cmd").forEach(function (el) {
+        if (el.style.opacity == 0) {
+          delay++;
+        }
+      });
+      return delay;
+    },
   },
   methods: {
     SelectCategory(value) {
       this.selectedCategory = value;
     },
+  },
+  setup() {
+    const beforeEnter = (el) => {
+      el.style.opacity = 0;
+      el.style.transform = "translateY(100px)";
+    };
+
+    const enter = (el, done) => {
+      gsap.to(el, {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        onComplete: done,
+        delay: el.dataset.index * 0.2,
+      });
+    };
+
+    const beforeLeave = (el) => {
+      el.style.opacity = 1;
+      // el.style.transform = "translateY(100px)";
+    };
+
+    const leave = (el, done) => {
+      gsap.to(el, {
+        opacity: 0,
+        y: 100,
+        duration: 1,
+        onComplete: done,
+        delay: 0.2,
+      });
+    };
+
+    return { beforeEnter, enter, beforeLeave, leave };
   },
   watch: {},
 };

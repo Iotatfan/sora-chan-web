@@ -21,3 +21,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.content {
+  padding-top: 128px !important;
+}
+</style>
