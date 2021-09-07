@@ -27,7 +27,6 @@
       <div class="d-flex flex-column w-100 ms-lg-3 mt-lg-0 mt-3">
         <transition-group
           appear
-          tag="ul"
           @before-enter="beforeEnter"
           @enter="enter"
           @before-leave="beforeLeave"
