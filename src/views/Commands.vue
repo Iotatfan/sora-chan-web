@@ -96,14 +96,8 @@ export default {
           id: 5,
           val: ",disconnect",
           desc: "Disconnects the bot from your voice channel and clears the queue",
-          category: "Player",
-        },
-        {
-          id: 6,
-          val: ",autoplay",
-          desc: "Toggles AutoPlay, which will automatically queue the best song to play next through looking at your listening history",
           category: "Setting",
-        },
+        }
       ],
       selectedCategory: 0,
       displayCount: 0,
