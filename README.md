@@ -1,5 +1,7 @@
 # sora-chan-web
 
+[Site Link](https://iotatfan.github.io/sora-chan-web/).
+
 ## Project setup
 ```
 npm install
