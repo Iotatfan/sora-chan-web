@@ -1,9 +1,13 @@
 <template>
   <app-header />
   <div class="flex-wrapper">
-    <router-view />
-    <app-footer />
+    <router-view v-slot="{ Component }">
+      <transition name="route" mode="out-in">
+        <component :is="Component"></component>
+      </transition>
+    </router-view>
   </div>
+  <app-footer />
 </template>
 
 <script>
@@ -25,26 +29,49 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: white;
+  color: var(white);
+  font-size: 16px;
 }
 
 body {
-  background: #141518 !important;
-}
-
-.btn {
-  font-size: 24px !important;
+  background: var(--black-body) !important;
 }
 
 .flex-wrapper {
   display: flex;
-  min-height: 88vh;
+  min-height: 70vh;
   flex-direction: column;
   justify-content: space-between;
+  padding: 5rem 20rem 0rem 20rem;
 }
 
-.headline {
-  font-weight: bold;
-  font-size: 54px;
+@media (max-width: 90rem) {
+  .flex-wrapper {
+    padding: 5rem 5rem 0rem 5rem;
+  }
+}
+
+@media (max-width: 30rem) {
+  .flex-wrapper {
+    padding: 1rem;
+  }
+}
+
+.route-enter-from {
+  opacity: 0;
+  transform: translateX(100px);
+}
+
+.route-enter-active {
+  transition: all 0.25s ease-out;
+}
+
+.route-leave-to {
+  opacity: 0;
+  transform: translateX(-100px);
+}
+
+.route-leave-active {
+  transition: all 0.25s ease-in;
 }
 </style>

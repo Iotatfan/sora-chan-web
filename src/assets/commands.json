@@ -1,0 +1,40 @@
+[
+    {
+        "id": 0,
+        "val": ",play",
+        "short": ",p",
+        "desc": "Loads your input and adds it to the queue",
+        "category": "Player"
+    },
+    {
+        "id": 1,
+        "val": ",queue",
+        "short": ",q",
+        "desc": "Displays the current song queue",
+        "category": "Player"
+      },
+      {
+        "id": 2,
+        "val": ",skip",
+        "desc": "Skips to the next song",
+        "category": "Player"
+      },
+      {
+        "id": 3,
+        "val": ",stop",
+        "desc": "Stops the currently playing track",
+        "category": "Player"
+      },
+      {
+        "id": 4,
+        "val": ",shuffle",
+        "desc": "Randomizes the current order of tracks in the queue",
+        "category": "Player"
+      },
+      {
+        "id": 5,
+        "val": ",disconnect",
+        "desc": "Disconnects the bot from your voice channel and clears the queue",
+        "category": "Setting"
+      }
+]

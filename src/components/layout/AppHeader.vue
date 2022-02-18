@@ -30,14 +30,19 @@
             style="--bs-scroll-height: 100px"
           >
             <li class="nav-item">
-              <router-link class="nav-link glow white" to="/">Home</router-link>
+              <io-button
+                label="Home"
+                buttonType="no-border"
+                @click="goTo('Home')"
+              />
             </li>
             <li class="nav-item">
-              <router-link class="nav-link glow white" to="/commands">Commands</router-link>
+              <io-button
+                label="Commands"
+                buttonType="no-border"
+                @click="goTo('Commands')"
+              />
             </li>
-            <!-- <li class="nav-item">
-              <router-link class="nav-link glow white" to="/about">About</router-link>
-            </li> -->
           </ul>
         </div>
       </div>
@@ -49,6 +54,11 @@
 export default {
   name: "AppHeader",
   components: {},
+  methods: {
+    goTo: function(name) {
+      this.$router.push({ name: name })
+    }
+  }
 };
 </script>
 
@@ -59,27 +69,16 @@ export default {
 
 #navbarScroll a {
   color: white;
-  font-size: 24px;
+  font-size: 1.5rem;
   text-decoration: none;
 }
 
 .sora-icon {
-  margin-left: 24px;
+  margin-left: 1.5rem;
 }
 
 .nav-link {
-  margin-right: 24px;
-}
-
-.white {
-  color: white !important;
-  opacity: 0.75;
-  text-decoration: none;
-  transition: 0.3s !important;
-}
-
-.white:hover {
-  opacity: 1;
+  margin-right: 1.5rem;
 }
 
 </style>

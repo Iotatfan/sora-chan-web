@@ -1,18 +1,12 @@
 <template>
-  <div class="container-xxl">
+  <div class="wrapper">
     <intro></intro>
-    <music class="trigger left"></music>
-    <social class="trigger right"></social>
-    <ready class="trigger left"></ready>
   </div>
 </template>
 
 <script>
-import Intro from "@/components/home/Intro.vue";
-import Music from "@/components/home/Music.vue";
-import Social from "@/components/home/Social.vue";
-import Ready from "@/components/home/Ready.vue";
 // @ is an alias to /src
+import Intro from "@/components/home/Intro.vue";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -22,9 +16,6 @@ export default {
   name: "Home",
   components: {
     Intro,
-    Music,
-    Social,
-    Ready,
   },
   mounted() {
     this.scrollAnimation();

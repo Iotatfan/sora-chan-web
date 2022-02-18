@@ -1,30 +1,18 @@
 <template>
-  <div class="container px-xxl-5 py-5">
-    <div class="d-flex flex-lg-row flex-column container pt-5 px-xxl-5">
+  <div class="">
+    <div class="flex flex-row">
       <!-- Categories -->
-      <div
-        class="
-          d-flex
-          flex-row flex-lg-column flex-wrap
-          justify-content-center
-          bg-dark
-          rounded
-          py-1
-          px-2
-          h-100
-        "
-      >
-        <button-category
+      <div class="flex flex-col category-wrapper">
+        <io-button
           v-for="(category, index) in categories"
-          :category="category"
-          :idx="index"
+          :custom-class="['category-btn', selectedCategory === index ? 'active' : '']"
           :key="index"
-          :class="{ active: index === this.selectedCategory }"
-          v-on:click="SelectCategory(index)"
-        ></button-category>
+          :label="category"
+          @click="selectCategory(index)"
+        />
       </div>
       <!-- Commands -->
-      <div class="d-flex flex-column w-100 ms-lg-3 mt-lg-0 mt-3">
+      <div class="flex flex-col">
         <transition-group
           appear
           @before-enter="beforeEnter"
@@ -32,15 +20,19 @@
           @before-leave="beforeLeave"
           @leave="leave"
         >
-          <button-command
-            class="btn-cmd"
-            v-for="(command, index) in filteredCommands"
-            :command="command.val"
-            :desc="command.desc"
-            :idx="index"
-            :key="command.id"
-            :data-index="index"
-          ></button-command>
+          <io-accordion 
+            v-for="(command) in filteredCommands"
+            :key="command.id"  
+          >
+            <template v-slot:title>
+              <div style="margin-left: 1rem">
+                {{ command.val }}
+              </div>
+            </template>
+            <template v-slot:body>
+              {{ command.desc }}
+            </template>
+          </io-accordion>
         </transition-group>
       </div>
     </div>
@@ -48,69 +40,22 @@
 </template>
 
 <script>
-import ButtonCategory from "../components/commands/ButtonCategory.vue";
-import ButtonCommand from "../components/commands/ButtonCommand.vue";
 import { gsap } from "gsap";
+import categoriesData from "../assets/categories.json"
+import commandsData from "../assets/commands.json"
 
 export default {
   name: "Commands",
-  components: {
-    ButtonCategory,
-    ButtonCommand,
-  },
   data() {
     return {
-      categories: ["All", "Player", "Setting"],
-      commands: [
-        {
-          id: 0,
-          val: ",play",
-          desc: "Loads your input and adds it to the queue",
-          category: "Player",
-        },
-        {
-          id: 1,
-          val: ",queue",
-          desc: "Displays the current song queue",
-          category: "Player",
-        },
-        {
-          id: 2,
-          val: ",skip",
-          desc: "Skips to the next song",
-          category: "Player",
-        },
-        {
-          id: 3,
-          val: ",stop",
-          desc: "Stops the currently playing track",
-          category: "Player",
-        },
-        {
-          id: 4,
-          val: ",shuffle",
-          desc: "Randomizes the current order of tracks in the queue",
-          category: "Player",
-        },
-        {
-          id: 5,
-          val: ",disconnect",
-          desc: "Disconnects the bot from your voice channel and clears the queue",
-          category: "Setting",
-        }
-      ],
+      categories: categoriesData,
+      commands: commandsData,
       selectedCategory: 0,
       displayCount: 0,
     };
   },
   computed: {
     filteredCommands: function () {
-      console.log(this.displayCount);
-      console.log(
-        this.commands.filter(
-          (n) => n.category == this.categories[this.selectedCategory]
-        ).length
-      );
       if (this.selectedCategory === 0) {
         return this.commands;
       }
@@ -127,9 +72,10 @@ export default {
       });
       return delay;
     },
+    
   },
   methods: {
-    SelectCategory(value) {
+    selectCategory(value) {
       this.selectedCategory = value;
     },
   },
@@ -145,7 +91,8 @@ export default {
         y: 0,
         duration: 1,
         onComplete: done,
-        delay: el.dataset.index * 0.2,
+        // delay: el.dataset.index * 0.2,
+        delay: 0.5,
       });
     };
 
@@ -169,3 +116,36 @@ export default {
   watch: {},
 };
 </script>
+
+<style scoped>
+
+.category-wrapper {
+  background: var(--dark-grey);
+  border-radius: .25rem;
+  width: inherit !important;
+  max-width: 15rem;
+  height: max-content !important;
+  padding: .5rem;
+}
+
+.category-btn {
+  margin: .5rem 1rem .5rem 1rem !important;
+  background: var(--semi-dark-grey);
+  color: white;
+}
+
+.category-btn.active {
+  background: var(--discord);
+}
+
+@media (max-width: 30rem) {
+  .category-wrapper {
+    width: auto !important;
+    max-width: 100%;
+  }
+
+  .category-btn {
+    width: inherit;
+  }
+}
+</style>
