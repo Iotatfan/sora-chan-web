@@ -51,9 +51,13 @@
 </template>
 
 <script>
+import IoButton from '@/external/components/button/Button.vue'
+
 export default {
+  components: {
+    IoButton
+  },
   name: "AppHeader",
-  components: {},
   methods: {
     goTo: function(name) {
       this.$router.push({ name: name })

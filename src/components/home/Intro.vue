@@ -20,8 +20,12 @@
 </template>
 
 <script>
+import IoButton from '@/external/components/button/Button.vue'
 
 export default {
+  components: {
+    IoButton
+  },
   name: "Intro",
   methods: {
     inviteToDiscord: function() {

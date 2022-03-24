@@ -43,8 +43,14 @@
 import { gsap } from "gsap";
 import categoriesData from "../assets/categories.json"
 import commandsData from "../assets/commands.json"
+import IoAccordion from '@/external/components/button/Accordion.vue'
+import IoButton from '@/external/components/button/Button.vue'
 
 export default {
+  components: {
+    IoAccordion,
+    IoButton
+  },
   name: "Commands",
   data() {
     return {
